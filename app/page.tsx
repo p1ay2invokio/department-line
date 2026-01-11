@@ -111,10 +111,14 @@ export default function Home() {
 
       <div className="flex justify-between">
         <p className="font-[medium] text-2xl">สถานะการรับสินค้า</p>
+
         <p onClick={() => {
           setModal(true)
         }} className="font-[bold] cursor-pointer text-blue-400">+ เพิ่ม</p>
       </div>
+
+
+      <p className="font-[regular]">เข้ากลุ่ม LINE เพื่อรับแจ้งเตือน <a className="text-green-500 underline" href="https://line.me/ti/g/Tug9NxX-Fa">https://line.me/ti/g/Tug9NxX-Fa</a></p>
 
       <div className="gap-5 flex flex-col mt-5">
 
