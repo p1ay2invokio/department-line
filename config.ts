@@ -1,0 +1,1 @@
+export const uri = `https://department.whanjeabs.online`
