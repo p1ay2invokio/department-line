@@ -50,7 +50,7 @@ export default function Home() {
           setModal(false)
         }
 
-      }} className="w-full h-full bg-black/60 fixed left-0 top-0 flex justify-center items-center">
+      }} className="w-full h-full z-[10] bg-black/60 fixed left-0 top-0 flex justify-center items-center">
         <div className="w-[300px] rounded-xl bg-white p-5 gap-2 flex flex-col">
           <p className="font-[medium]">GR ตรวจรับสินค้า</p>
           <div>
