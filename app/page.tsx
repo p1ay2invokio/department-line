@@ -50,8 +50,8 @@ export default function Home() {
           setModal(false)
         }
 
-      }} className="w-full h-full z-[10] bg-black/60 fixed left-0 top-0 flex justify-center items-center">
-        <div className="w-[300px] rounded-xl bg-white p-5 gap-2 flex flex-col">
+      }} className="w-full h-full z-10 bg-black/60 fixed left-0 top-0 flex justify-center items-center">
+        <div className="w-75 rounded-xl bg-white p-5 gap-2 flex flex-col">
           <p className="font-[medium]">GR ตรวจรับสินค้า</p>
           <div>
 
@@ -118,7 +118,9 @@ export default function Home() {
       </div>
 
 
-      <p className="font-[regular]">เข้ากลุ่ม LINE เพื่อรับแจ้งเตือน <a className="text-green-500 underline" href="https://line.me/ti/g/Tug9NxX-Fa">https://line.me/ti/g/Tug9NxX-Fa</a></p>
+      <p className="font-[regular]">เข้ากลุ่ม LINE เพื่อรับแจ้งเตือน <a className="text-green-500 underline" href="https://line.me/ti/g/FLJgYFxXMr">https://line.me/ti/g/FLJgYFxXMr</a></p>
+
+      <p className="font-[regular] mt-5">ข้อมูล ณ วันที่ {dayjs().tz('Asia/Bangkok').format('DD/MM/YY')}</p>
 
       <div className="gap-5 flex flex-col mt-5">
 
