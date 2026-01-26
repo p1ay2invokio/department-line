@@ -17,12 +17,13 @@ export class List {
     }
 
 
-    public InsertList = async (product: string, from: string, department: string, sender: string) => {
+    public InsertList = async (product: string, from: string, department: string, sender: string, qty: number) => {
         let { data } = await axios.post(`${uri}/list`, {
             product: product,
             from: 'GR',
             department: department,
-            sender: sender
+            sender: sender,
+            qty: qty
         })
 
         return data

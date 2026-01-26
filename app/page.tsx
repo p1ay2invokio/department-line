@@ -25,6 +25,7 @@ export default function Home() {
   let [sender, setSender] = useState('')
   let [from, setFrom] = useState('')
   let [department, setDepartment] = useState('')
+  let [qty, setQty] = useState(0)
 
 
   let date = new Date()
@@ -82,16 +83,23 @@ export default function Home() {
             }} className="w-full h-[45px] indent-3 font-[regular] border rounded-md border-gray-300"></input>
           </div>
 
+          <div>
+            <label className="font-[regular]">จำนวน (กล่อง)</label>
+            <input type="number" onChange={(e) => {
+              setQty(Number(e.target.value))
+            }} className="w-full h-[45px] indent-3 font-[regular] border rounded-md border-gray-300"></input>
+          </div>
+
 
 
           {from || department ? <p className="font-[medium]">แผนก GR {`->`} แผนก{department}</p> : null}
 
 
           <button onClick={async () => {
-            if (product && sender && department) {
+            if (product && sender && department && qty > 0) {
               let ls = new List()
 
-              let res = await ls.InsertList(product, from, department, sender)
+              let res = await ls.InsertList(product, from, department, sender, qty)
 
               if (res.success) {
                 setRefresh(refresh + 1)
@@ -131,11 +139,12 @@ export default function Home() {
                 <p className="font-[medium] text-[18px]">{item.id}.{item.product}</p>
                 <div className="flex flex-col items-end">
                   <p className="font-[medium] text-[18px]">{item.sender}</p>
-                  <p className="font-[regular] text-[14px] text-gray-500">{dayjs().diff(item.createdAt, 'minutes')} นาทีที่ผ่านมา</p>
+                  <p className="font-[regular] text-[14px] text-gray-500">{Number(dayjs().diff(item.createdAt, 'minutes')) > 60 ? 'มากกว่า 1 ชั่วโมง' : `${dayjs().diff(item.createdAt, 'minutes')} นาทีที่ผ่านมา`}</p>
                 </div>
               </div>
               <p className="font-[regular] text-gray-500">GR {`->`} PC แผนก {item.department}</p>
               <p className="font-[regular] text-gray-500">{dayjs.utc(item.createdAt).tz("Asia/Bangkok").format("DD/MM/YYYY HH:mm")}</p>
+              <p className="font-[regular] text-gray-500">จำนวน {item.qty ? item.qty : 0} กล่อง</p>
               <div className="gap-2 flex">
                 <button className={`pl-2 pr-2 h-[30px]  mt-2 text-white font-[regular] ${item.status == 0 ? "bg-red-700/70" : "bg-green-700/70"} rounded-md`}>{item.status == 0 ? "รอการรับสินค้า" : item.status == 1 ? "สำเร็จ" : ''}</button>
                 {item.status == 0 ? <button onClick={async () => {
